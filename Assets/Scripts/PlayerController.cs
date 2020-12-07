@@ -15,6 +15,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetAxisRaw("Horizontal") < -0.5f )
+        {
+
+            transform.Translate (new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f));
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        if(Input.GetAxisRaw("Horizontal") > 0.5f)
+        {
+            transform.Translate (new Vector3(-Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f));
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
     }
 }
