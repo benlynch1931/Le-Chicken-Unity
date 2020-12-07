@@ -5,19 +5,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        anim.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
+        anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
         if(Input.GetAxisRaw("Horizontal") < -0.5f )
         {
-
             transform.Translate (new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f));
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
@@ -25,6 +27,10 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate (new Vector3(-Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f));
             transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+        if(Input.GetAxisRaw("Vertical") < -0.5f || Input.GetAxisRaw("Vertical") > 0.5f )
+        {
+          transform.Translate (new Vector3(0f, Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime, 0f));
         }
     }
 }
