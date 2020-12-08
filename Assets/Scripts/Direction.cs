@@ -6,7 +6,6 @@ public class Direction
 {
     private Vector3 vector;
 
-
     public Direction(string name)
     {
       if (name == "north")
@@ -23,7 +22,7 @@ public class Direction
         vector = new Vector3(-1f, 0f, 0f);
       }
     }
-
+    
     public Vector3 GetVector()
     {
       return vector;
