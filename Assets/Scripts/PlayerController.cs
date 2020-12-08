@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     private Chicken chicken;
     private Vector3 horizontal;
     private Vector3 vertical;
+    private Direction north = new Direction("north");
+    private Direction south = new Direction("south");
+    private float scalar;
 
     // Start is called before the first frame update
     void Start()
@@ -22,15 +25,20 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
         anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
-        if(Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
+        // if(Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
+        // {
+        //     horizontal = new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f);
+        //     chicken.Move(horizontal);
+        // }
+        if(Input.GetAxisRaw("Vertical") > 0.5f )
         {
-            horizontal = new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f);
-            chicken.Move(horizontal);
+            scalar = Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime;
+            chicken.Move(north, scalar);
         }
-        if(Input.GetAxisRaw("Vertical") < -0.5f || Input.GetAxisRaw("Vertical") > 0.5f )
+        if(Input.GetAxisRaw("Vertical") < -0.5f)
         {
-            vertical = new Vector3(0f, Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime, 0f);
-            chicken.Move(vertical);
+            scalar = Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime;
+            chicken.Move(south, scalar);
         }
     }
 }

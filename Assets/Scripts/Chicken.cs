@@ -7,10 +7,9 @@ public class Chicken : MonoBehaviour
     // Start is called before the first frame update
  
 
-    public void Move(Vector3 direction)
+    public void Move(Direction direction, float scalar)
     {
-        transform.Translate(direction);
-        // transform.localRotation = Quaternion.Euler(0, 0, 0);
+        transform.Translate(direction.GetVector()*scalar);
     }
 
 
