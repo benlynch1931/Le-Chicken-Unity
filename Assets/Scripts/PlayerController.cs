@@ -29,6 +29,24 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
         scalar = moveSpeed * Time.deltaTime;
 
+        if(Input.GetAxisRaw("Horizontal") > 0.5f )
+        {
+            chicken.Move(east, scalar);
+        }
+        if(Input.GetAxisRaw("Horizontal") < -0.5f)
+        {
+            chicken.Move(west, scalar);
+        }
+
+        if(Input.GetAxisRaw("Vertical") > 0.5f )
+        {
+            chicken.Move(north, scalar);
+        }
+        if(Input.GetAxisRaw("Vertical") < -0.5f)
+        {
+            chicken.Move(south, scalar);
+        }
+
         if (Input.touchCount > 0)
         {
           chicken.Move(east, scalar);
