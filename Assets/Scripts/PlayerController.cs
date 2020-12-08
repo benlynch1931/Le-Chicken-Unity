@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private Chicken chicken;
     private Vector3 horizontal;
+    private Vector3 vertical;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,8 @@ public class PlayerController : MonoBehaviour
         }
         if(Input.GetAxisRaw("Vertical") < -0.5f || Input.GetAxisRaw("Vertical") > 0.5f )
         {
-          transform.Translate (new Vector3(0f, Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime, 0f));
+            vertical = new Vector3(0f, Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime, 0f);
+            chicken.Move(vertical);
         }
     }
 }
