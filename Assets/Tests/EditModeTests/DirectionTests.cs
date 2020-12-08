@@ -19,16 +19,19 @@ namespace Tests
             Assert.AreEqual(expected:new Vector3(x:0, y:1, z:0), actual:north.GetVector());
         }
 
+        [Test]
         public void East()
         {
             Assert.AreEqual(expected:new Vector3(x:1, y:0, z:0), actual:east.GetVector());
         }
 
+        [Test]
         public void South()
         {
             Assert.AreEqual(expected:new Vector3(x:0, y:-1, z:0), actual:south.GetVector());
         }
 
+        [Test]
         public void West()
         {
             Assert.AreEqual(expected:new Vector3(x:-1, y:0, z:0), actual:west.GetVector());
